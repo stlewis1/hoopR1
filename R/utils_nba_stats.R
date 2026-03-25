@@ -1,21 +1,35 @@
 .nba_headers <-
   function(url = "https://stats.nba.com/stats/leaguegamelog?Counter=1000&Season=2019-20&Direction=DESC&LeagueID=00&PlayerOrTeam=P&SeasonType=Regular%20Season&Sorter=DATE",
            params = list()) {
-    headers <- c(
-      `Host` = "stats.nba.com",
-      `User-Agent` = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36",
-      `Accept` = "application/json, text/plain, */*",
-      `Accept-Language` = "en-US,en;q=0.5",
-      `Accept-Encoding` = "gzip, deflate, br",
-      `x-nba-stats-origin` = "stats",
-      `x-nba-stats-token` = "true",
-      `Connection` = "keep-alive",
-      `Origin` = "http://stats.nba.com",
-      `Referer` = "https://www.nba.com/",
-      `Pragma` = "no-cache",
-      `Cache-Control` = "no-cache"
-    )
+#    headers <- c(
+#      `Host` = "stats.nba.com",
+#      `User-Agent` = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36",
+#      `Accept` = "application/json, text/plain, */*",
+#      `Accept-Language` = "en-US,en;q=0.5",
+#      `Accept-Encoding` = "gzip, deflate, br",
+#      `x-nba-stats-origin` = "stats",
+#      `x-nba-stats-token` = "true",
+#      `Connection` = "keep-alive",
+#      `Origin` = "http://stats.nba.com",
+#      `Referer` = "https://www.nba.com/",
+#      `Pragma` = "no-cache",
+#      `Cache-Control` = "no-cache"
+#    )
 
+    headers <- c(
+    `Host` = "stats.nba.com",
+    `User-Agent` = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0",
+    `Accept` = "application/json, text/plain, */*",
+    `Accept-Language` = "en-US,en;q=0.5",
+    `Accept-Encoding` = "gzip, deflate, br",
+    `x-nba-stats-origin` = "stats",
+    `x-nba-stats-token` = "true",
+    `Connection` = "keep-alive",
+    `Referer` = "https://www.nba.com/",
+    `Pragma` = "no-cache",
+    `Cache-Control` = "no-cache"
+  )
+ 
     resp <- .retry_request(url, params = params, headers = headers)
 
     json <- resp %>%
@@ -41,6 +55,20 @@ request_with_proxy <- function(url,
                                origin = "https://stats.nba.com",
                                referer = "https://www.nba.com/",
                                ...) {
+#  headers <- c(
+#    `Host` = "stats.nba.com",
+#    `User-Agent` = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0",
+#    `Accept` = "application/json, text/plain, */*",
+#    `Accept-Language` = "en-US,en;q=0.5",
+#    `Accept-Encoding` = "gzip, deflate, br",
+#    `x-nba-stats-origin` = "stats",
+#    `x-nba-stats-token` = "true",
+#    `Connection` = "keep-alive",
+#    `Referer` = "https://www.nba.com/",
+#    `Pragma` = "no-cache",
+#    `Cache-Control` = "no-cache"
+#  )
+
   headers <- c(
     `Host` = "stats.nba.com",
     `User-Agent` = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0",
@@ -54,7 +82,7 @@ request_with_proxy <- function(url,
     `Pragma` = "no-cache",
     `Cache-Control` = "no-cache"
   )
-
+  
   resp <- .retry_request(url, params = params, headers = headers)
 
   json <- resp %>%
